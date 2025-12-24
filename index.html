@@ -1,22 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script defer src="face-api.min.js"></script>
-  <script defer src="script.js"></script>
-  <title>Face Recognition</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Face Detection Web App</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column
+      font-family: 'Poppins', sans-serif;
+      background: #1e1e2f;
+      color: #fff;
+      min-height: 100vh;
+      padding: 40px 10px;
+      text-align: center;
+    }
+
+    h1 {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #d1d1d1;
+      font-size: 15px;
+    }
+
+    .card {
+      background: #2b2b3f;
+      margin: auto;
+      padding: 25px;
+      width: 90%;
+      max-width: 550px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .custom-btn {
+      background: #4a69bd;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .custom-btn:hover {
+      background: #3b4f94;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    #image-container {
+      margin-top: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    #inputImage {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
     }
 
     canvas {
@@ -27,6 +78,24 @@
   </style>
 </head>
 <body>
-  <input type="file" id="imageUpload">
+
+  <h1>Face Detection App</h1>
+  <p>Upload an image to find faces inside it</p>
+
+  <div class="card">
+    <label for="fileUpload" class="custom-btn">Choose Image</label>
+    <input type="file" id="fileUpload" accept="image/*"/>
+
+    <button class="custom-btn" onclick="detectFaces()">Detect Faces</button>
+
+    <div id="image-container">
+      <img id="inputImage" src="" alt="Your Image" />
+      <canvas id="overlay"></canvas>
+    </div>
+  </div>
+
+  <!-- face-api.js -->
+  <script src="face-api.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
